@@ -2,6 +2,11 @@
 description: 'Develop a multi-page streamlit dashboard'
 tools: ['runCommands', 'runTasks', 'edit/createFile', 'edit/createDirectory', 'edit/editFiles', 'search', 'new', 'extensions', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'todos', 'ms-python.python/getPythonEnvironmentInfo', 'ms-python.python/getPythonExecutableCommand', 'ms-python.python/installPythonPackage', 'ms-python.python/configurePythonEnvironment', 'ms-toolsai.jupyter/configureNotebook', 'ms-toolsai.jupyter/listNotebookPackages', 'ms-toolsai.jupyter/installNotebookPackages']
 model: Claude Sonnet 4.5
+handoffs:
+  - label: Test Implementation
+    agent: test-streamlit-dashboard
+    prompt: Use playwright and openSimpleBrowser to test the streamlit dashboard for functionality and correctness.
+    send: true
 ---
 
 ## Development
