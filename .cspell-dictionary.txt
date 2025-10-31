@@ -4,7 +4,15 @@ backticked
 chatmode
 chatmodes
 contravarience
+devcontainer
+devcontainers
 frontmatter
+Homebrew
+hve
+mcp
 pasteable
+pipx
+rearchitecture
 resumability
+steveyegge
 wiql

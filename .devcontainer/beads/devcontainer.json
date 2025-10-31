@@ -1,0 +1,92 @@
+{
+    "name": "hve-ado-scaffold-beads",
+    "image": "mcr.microsoft.com/powershell:preview-7.6-ubuntu-24.04",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/azure-cli:1": {
+            "extensions": "azure-devops"
+        },
+        "ghcr.io/devcontainers/features/dotnet:2": {},
+        "ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers/features/powershell:1": {},
+        "ghcr.io/devcontainers/features/python:1": {},
+        "ghcr.io/devcontainers/features/go:1": {},
+        "ghcr.io/devcontainers-extra/features/pipx-package:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "mcp": {
+                "servers": {
+                    "beads": {
+                        "type": "stdio",
+                        "command": "uvx",
+                        "args": [
+                            "beads-mcp"
+                        ]
+                    }
+                }
+            },
+            "settings": {
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                },
+                "chat.instructionsFilesLocations": {
+                    ".github/beads/instructions": true
+                },
+                "chat.promptFilesLocations": {
+                    ".github/beads/prompts": true
+                }
+            },
+            "extensions": [
+                "charliermarsh.ruff",
+                "darkriszty.markdown-table-prettify",
+                "DavidAnson.vscode-markdownlint",
+                "eamodio.gitlens",
+                "EditorConfig.EditorConfig",
+                "esbenp.prettier-vscode",
+                "foxundermoon.shell-format",
+                "GitHub.vscode-pull-request-github",
+                "ms-azuretools.vscode-docker",
+                "ms-dotnettools.csdevkit",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "ms-vscode.azurecli",
+                "streetsidesoftware.code-spell-checker",
+                "streetsidesoftware.code-spell-checker-cspell-bundled-dictionaries",
+                "timonwong.shellcheck",
+                "yzhang.markdown-all-in-one",
+                "ms-azure-devops.azure-pipelines",
+                "ms-vscode.powershell",
+                "bierner.markdown-mermaid",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-dotnettools.csharp",
+                "ms-azuretools.vscode-containers",
+                "tamasfe.even-better-toml",
+                "redhat.vscode-yaml",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "specstory.specstory-vscode",
+                "donjayamanne.python-extension-pack",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "forwardPorts": [
+        8080
+    ],
+    "containerEnv": {
+        "BROWSER": "code --new-window"
+    },
+    "remoteEnv": {
+        "PATH": "/home/vscode/.local/bin:${containerEnv:PATH}"
+    },
+    "onCreateCommand": {
+        "apt": "sudo apt update && sudo apt install -y shellcheck pipx",
+        "uv": "pip install uv",
+        "beads": "go install github.com/steveyegge/beads/cmd/bd@latest"
+    },
+    "postCreateCommand": "pipx install uv",
+    "remoteUser": "vscode"
+}

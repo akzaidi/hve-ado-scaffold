@@ -28,11 +28,18 @@
 				"${input:ado_tenant}"
 			]
 		},
+		"beads": {
+			"type": "stdio",
+			"command": "uvx",
+			"args": [
+				"beads-mcp"
+			]
+		},
 		"playwright": {
 			"command": "npx",
 			"args": [
 				"@playwright/mcp@latest"
 			]
 		}
-	}
+	},
 }

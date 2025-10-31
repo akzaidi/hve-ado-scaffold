@@ -461,7 +461,7 @@ pr.md
 pr-reference.xml
 
 # Warning: Ignoring .copilot-tracking will prevent Copilot from searching for files in these directories
-.copilot-tracking/*
+.copilot-tracking/
 !.copilot-tracking/workitems
 !.copilot-tracking/research
 !.copilot-tracking/plans

@@ -215,6 +215,26 @@ Located in [`.github/instructions/`](./.github/instructions/) - these are loaded
 
 Layering Model: meta > domain (build / planning / update / implementation) > content-type (markdown / commit) > language (csharp + tests). Conflicts resolve by earliest file declaring **HIGHEST PRIORITY** segment. Always re-read relevant instruction files before edits (enforced by meta policy & prompt logic).
 
+### Beads Issue Tracking (Optional) 🔗
+
+An **optional alternative** to markdown-based planning (`task-planner` + `.copilot-tracking/plans/`) for dependency-aware issue tracking optimized for AI agents.
+
+* **What**: Git-versioned issue tracker with structured dependency management (blocks, related, parent-child, discovered-from)
+* **Why**: Enables AI agents to automatically discover, track, and sequence complex multi-step work with proper dependencies
+* **When to use**: Solo development, complex implementations requiring dependency tracking, rapid local iteration
+* **Coexists with ADO**: Use beads for local development cycles, sync important milestones to ADO for team visibility
+
+**Getting started:**
+
+1. Switch to the beads devcontainer (`.devcontainer/beads/devcontainer.json`)
+2. Initialize beads: `bd init --prefix hve`
+3. Use `/bd-planner-plan` to create beads from research
+4. Use `/bd-start` in agent mode to implement beads
+
+**Complete documentation:** [`.github/beads/README.md`](./.github/beads/README.md)
+
+**Note:** Beads is alpha software (v0.9.x) designed for solo workflows. Multi-repository workspaces are not currently supported.
+
 ### Docs you can reuse 📚
 
 * [`docs/solution-adr-library/adr-template-solutions.md`](./docs/solution-adr-library/adr-template-solutions.md)
@@ -342,3 +362,9 @@ Add a `*.prompt.md` to [`.github/prompts/`](./.github/prompts/), a `*.instructio
 
 **What if I don't use Azure DevOps?**
 Replace ADO prompts with equivalents (e.g., GitHub Issues or Jira MCP servers) keeping artifact contracts (raw JSON → handoff → planning → implementation → commit) intact.
+
+**What is beads and should I use it?**
+Beads is an optional git-versioned issue tracker designed for AI agents. Use it if you want structured dependency tracking and automatic work discovery during solo development. It's alpha software (v0.9.x) that coexists with markdown planning - choose based on your workflow preferences. See [`.github/beads/README.md`](./.github/beads/README.md) for details.
+
+**Can I use beads with Azure DevOps?**
+Yes! Beads is designed for local development iteration. Use beads for rapid solo work, then sync important milestones to ADO for team visibility and compliance. Both MCP servers run simultaneously without conflicts.
