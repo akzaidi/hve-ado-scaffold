@@ -8,20 +8,20 @@
 
 * [prompts/uv-manage.prompt.md](.github/prompts/uv-manage.prompt.md) - Prompt for creating and managing uv projects
 
-## Copilot Chat Modes (.github/chatmodes) for workflow automation
+## Copilot Agent Modes (.github/agents) for workflow automation
 
-Located in [`.github/chatmodes/`](./.github/chatmodes/). Specialized persistent personas for data science workflows:
+Located in [`.github/agents/`](./.github/agents/). Specialized persistent personas for data science workflows:
 
-* [`gen-data-spec.chatmode.md`](./.github/chatmodes/gen-data-spec.chatmode.md) - Systematic data discovery and content review. Analyzes directory structures, previews data formats, and creates exploration plans in `docs/notes/`.
-* [`gen-jupyter-notebook.chatmode.md`](./.github/chatmodes/gen-jupyter-notebook.chatmode.md) - Exploratory data analysis notebook creation. Generates comprehensive EDA notebooks with summary statistics, visualizations, and data transforms using pandas, seaborn, and plotly.
-* [`gen-streamlit-dashboard.chatmode.md`](./.github/chatmodes/gen-streamlit-dashboard.chatmode.md) - Multi-page Streamlit dashboard development. Creates interactive data exploration apps with univariate/multivariate analysis, time series visualization, and optional AutoGen chat integration.
-* [`test-streamlit-dashboard.chatmode.md`](./.github/chatmodes/test-streamlit-dashboard.chatmode.md) - Automated functional and behavioral testing for Streamlit dashboards. Uses Playwright and the VS Code Simple Browser extension to interact with the app, validate UI flows, and ensure dashboard reliability.
+* [`gen-data-spec.agent.md`](./.github/agents/gen-data-spec.agent.md) - Systematic data discovery and content review. Analyzes directory structures, previews data formats, and creates exploration plans in `docs/notes/`.
+* [`gen-jupyter-notebook.agent.md`](./.github/agents/gen-jupyter-notebook.agent.md) - Exploratory data analysis notebook creation. Generates comprehensive EDA notebooks with summary statistics, visualizations, and data transforms using pandas, seaborn, and plotly.
+* [`gen-streamlit-dashboard.agent.md`](./.github/agents/gen-streamlit-dashboard.agent.md) - Multi-page Streamlit dashboard development. Creates interactive data exploration apps with univariate/multivariate analysis, time series visualization, and optional AutoGen chat integration.
+* [`test-streamlit-dashboard.agent.md`](./.github/agents/test-streamlit-dashboard.agent.md) - Automated functional and behavioral testing for Streamlit dashboards. Uses Playwright and the VS Code Simple Browser extension to interact with the app, validate UI flows, and ensure dashboard reliability.
 
-Why chat modes? They reduce drift: each mode enforces domain‑specific rigor and artifacts. For data science, they create a structured workflow from data discovery → environment setup → exploration → dashboard deployment.
+Why agents? They reduce drift: each mode enforces domain‑specific rigor and artifacts. For data science, they create a structured workflow from data discovery → environment setup → exploration → dashboard deployment.
 
 ## Labs
 
-These hands-on labs demonstrate the complete data science workflow using GitHub Copilot chatmodes, from environment setup through interactive dashboard deployment and testing.
+These hands-on labs demonstrate the complete data science workflow using GitHub Copilot Agents, from environment setup through interactive dashboard deployment and testing.
 
 ### Lab 0: Python Environment Setup with uv
 
@@ -31,7 +31,7 @@ Establish a reproducible Python development environment using uv for modern depe
 
 #### Steps
 
-1. **Activate the uv Environment Chatmode**
+1. **Activate the uv Environment Instruction and Prompt**
    * Open GitHub Copilot Chat in VS Code
    * Type: `/uv-manage --python 3.12`
 
@@ -76,7 +76,7 @@ Use GitHub Copilot to automatically generate comprehensive data specifications a
 
 * Completed Lab 0 (environment setup)
 * Raw data files in a `data/` directory
-* Access to `gen-data-spec.chatmode.md`
+* Access to `gen-data-spec.agent.md`
 
 #### Steps
 
@@ -85,8 +85,8 @@ Use GitHub Copilot to automatically generate comprehensive data specifications a
    * For this example, ensure `data/home_assistant_data.csv` is available
    * Organize any supplementary data files or documentation
 
-2. **Activate the Data Specification Chatmode**
-   * Open Copilot Chat and switch the chat mode to `gen-data-spec`. Add the prompt: `generate a dataspec for the data in #file:data`
+2. **Activate the Data Specification Agent**
+   * Open Copilot Chat and switch the agent to `gen-data-spec`. Add the prompt: `generate a dataspec for the data in #file:data`
 
 3. **Automated Data Discovery**
    * Copilot will:
@@ -125,18 +125,18 @@ Generate a comprehensive exploratory data analysis (EDA) notebook using GitHub C
 
 * Completed Labs 0-1 (environment and data specification)
 * Data dictionary and profile artifacts in `outputs/`
-* Access to `gen-jupyter notebook.chatmode.md`
+* Access to `gen-jupyter notebook.agent.md`
 
 #### Steps
 
-1. **Activate the Jupyter Notebook Chatmode**
-   * Open Copilot Chat and switch the chat mode to `gen-jupyter-notebook`
+1. **Activate the Jupyter Notebook Agent**
+   * Open Copilot Chat and switch the agent to `gen-jupyter-notebook`
    * Specify your data context: `Create a jupyter notebook for the data in #file:data and data summary in #file:outputs`
 
 2. **Automated Notebook Generation**
 
    * Copilot will install the necessary libraries into your uv environment
-   * Copilot creates a structured notebook in `notebooks/` with sections specified by the chatmode prompt.
+   * Copilot creates a structured notebook in `notebooks/` with sections specified by the agent prompt.
 
 3. **Visualization Strategy**
    * Primary visualization library: **Plotly Express** for interactivity
@@ -173,12 +173,12 @@ Transform your EDA insights into a production-ready, multi-page Streamlit dashbo
 
 * Completed Labs 0-2 (environment, specification, notebook)
 * EDA notebook with processed datasets
-* Access to `gen-streamlit-dashboard.chatmode.md`
+* Access to `gen-streamlit-dashboard.agent.md`
 
 #### Steps
 
-1. **Activate the Streamlit Dashboard Chatmode**
-   * Reference: `@workspace #file:chatmodes use the gen-streamlit-dashboard chatmode`
+1. **Activate the Streamlit Dashboard Agent**
+   * Reference: `@workspace use the gen-streamlit-dashboard Agent`
    * Context: `create a comprehensive dashboard based on my EDA notebook #notebooks and data specifications #outputs`
 
 2. **Multi-Page Dashboard Architecture**
@@ -201,11 +201,11 @@ Implement comprehensive automated testing for your Streamlit dashboard using Pla
 
 * Completed Labs 0-3 (environment, specification, notebook, dashboard)
 * Running Streamlit application
-* Access to `test-streamlit-dashboard.chatmode.md`
+* Access to `test-streamlit-dashboard.agent.md`
 
 #### Steps
 
-1. **Activate the Testing Chatmode**
+1. **Activate the Testing Agent**
    * Reference: `Use #playwright to test the Streamlit dashboard. Use #openSimpleBrowser to open the streamlit app which is running on 8501 and begin testing`
 
 2. **Comprehensive Testing Strategy**
@@ -256,4 +256,4 @@ The four labs work together to create a complete data science development lifecy
 
 **Lab 3 → Lab 4**: Completed dashboard undergoes behavioral and performance testing to ensure quality
 
-Each lab leverages specialized GitHub Copilot chatmodes that enforce domain-specific best practices while maintaining workflow continuity. The result is a reproducible, tested, and documented data science project suitable for both exploration and production deployment.
+Each lab leverages specialized GitHub Copilot Agents that enforce domain-specific best practices while maintaining workflow continuity. The result is a reproducible, tested, and documented data science project suitable for both exploration and production deployment.
